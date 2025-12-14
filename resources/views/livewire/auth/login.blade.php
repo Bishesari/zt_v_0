@@ -5,7 +5,7 @@
         <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
 
-        <form method="POST" action="{{ route('login.store') }}" class="flex flex-col gap-6">
+        <form method="POST" id="myForm" action="{{ route('login.store') }}" class="flex flex-col gap-6">
             @csrf
             <flux:input
                 name="user_name"
@@ -27,6 +27,7 @@
                     required
                     :placeholder="__('کلمه عبور')"
                     class:input="text-center tracking-widest font-bold"
+                    dir="ltr"
                     viewable
                 />
 
@@ -41,11 +42,18 @@
             <flux:checkbox name="remember" :label="__('بخاطر سپاری')" :checked="old('remember')" />
 
             <div class="flex items-center justify-end">
-                <flux:button variant="primary" type="submit" class="w-full" data-test="login-button">
+                <flux:button variant="primary" type="submit" id="submitBtn" class="w-full cursor-pointer" data-test="login-button">
                     {{ __('ورود') }}
                 </flux:button>
+
             </div>
         </form>
 
     </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function() {
+            document.getElementById('submitBtn').disabled = true;
+        });
+    </script>
 </x-layouts.auth>
