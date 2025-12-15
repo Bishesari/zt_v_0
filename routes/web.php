@@ -28,3 +28,5 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 });
+
+Volt::route('drivers', 'driver.index')->name('drivers.index')->middleware(['auth']);

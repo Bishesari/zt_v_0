@@ -15,10 +15,10 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('mobile_no', 11);
+            $table->string('mobile_nu', 11);
             $table->boolean('is_primary')->default(false);
             $table->timestamps();
-            $table->unique(['user_id', 'mobile_no']);
+            $table->unique(['user_id', 'mobile_nu']);
         });
     }
 
