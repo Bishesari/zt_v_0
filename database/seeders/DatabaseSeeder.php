@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create(['user_name'=>'admin', 'password'=>'admin']);
+        $this->call([
+            RolePermissionSeeder::class,
+            SuperAdminSeeder::class,
+            ]);
     }
 }
